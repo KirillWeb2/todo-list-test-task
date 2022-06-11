@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  outline: none;
+}
+
+.container {
+  max-width: 920px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #e9d9d8;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.root {
+  padding: 10px;
+  box-shadow: 0px 31px 57px 19px rgba(34, 60, 80, 0.21);
+}
+
+.upper__block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(128 128 128 / 18%);
+
+  input {
+    width: 100%;
+    padding-right: 10px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px 0 50px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__img {
+      width: 8%;
+    }
+
+    .completed {
+      text-decoration: line-through;
+    }
+
+    &__text {
+      width: 80%;
+    }
+  }
+}
+
+.sorting {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    color: #878787;
+  }
+
+  &__modes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .active {
+      background-color: #565151;
+      color: white;
+    }
+
+    p {
+      cursor: pointer;
+      border: 1px solid #878787;
+      border-radius: 5px;
+      padding: 2px 9px;
+    }
+  }
+}
