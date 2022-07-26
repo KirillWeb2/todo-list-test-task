@@ -14,7 +14,7 @@ const App = () => {
   const setCompleted = useCallback((id: number) => {
     setTodo(todo.map((i: ITodo) => {
       if (i.id === id) {
-        return { ...i, isCompleted: true }
+        return { ...i, isCompleted: !i.isCompleted }
       } else {
         return i
       }

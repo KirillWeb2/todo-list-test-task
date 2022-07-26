@@ -95,6 +95,8 @@ input {
     align-items: center;
     justify-content: flex-start;
 
+    cursor: pointer;
+
     &__img {
       width: 8%;
     }
@@ -138,6 +140,7 @@ input {
     }
 
     .item {
+      
       &:hover {
         background-color: rgba(128, 128, 128, 0.39);
         color: black;
@@ -150,5 +153,22 @@ input {
       border-radius: 5px;
       padding: 2px 9px;
     }
+  }
+}
+
+.form__btn {
+  background-color: rgba(128, 128, 128, 0.856);
+  color: white;
+  border: 1px solid #878787;
+  border-radius: 5px;
+  padding: 4px 9px;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.466);
+    color: black;
+  }
+  &:disabled {
+    background-color: rgba(128, 128, 128, 0.219);
+    color: rgba(0, 0, 0, 0.568);
   }
 }
