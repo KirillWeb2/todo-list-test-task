@@ -1,15 +1,16 @@
-import React, { FC } from 'react'
-import { Box, Typography } from '@mui/material'
-import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
-import { ITodo } from '../models/Todo'
+import React, { FC, memo } from 'react';
+import { Box, Typography } from '@mui/material';
+import { ITodo } from '../models/Todo';
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
-interface ITodos {
+
+interface ITasks {
     todo: ITodo[]
     setCompleted: (id: number) => void
-}
+};
 
 
-const Todos: FC<ITodos> = ({ todo, setCompleted }) => {
+const Tasks: FC<ITasks> = ({ todo, setCompleted }) => {
     return (
         <Box className="list">
             {todo && todo.map((item: ITodo) =>
@@ -31,6 +32,6 @@ const Todos: FC<ITodos> = ({ todo, setCompleted }) => {
             )}
         </Box>
     )
-}
+};
 
-export default Todos
+export default memo(Tasks);

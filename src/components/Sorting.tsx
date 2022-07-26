@@ -17,7 +17,7 @@ const Sorting: FC<ISorting> = ({ setParameter, parameter, clearCompleted, notMad
             <Box className='sorting__modes'>
                 <Typography
                     onClick={() => setParameter('all')}
-                    className={parameter === 'all' ? 'active' : ''}
+                    className={parameter === 'all' ? 'active item' : 'item'}
                     variant="body1"
                 >
                     All
@@ -25,19 +25,19 @@ const Sorting: FC<ISorting> = ({ setParameter, parameter, clearCompleted, notMad
                 <Typography
                     onClick={() => setParameter('active')}
                     variant="body1"
-                    className={parameter === 'active' ? 'active' : ''}
+                    className={parameter === 'active' ? 'active item' : 'item'}
                 >
                     Active
                 </Typography>
                 <Typography
                     onClick={() => setParameter('completed')}
                     variant="body1"
-                    className={parameter === 'completed' ? 'active' : ''}
+                    className={parameter === 'completed' ? 'active item' : 'item'}
                 >
                     Completed
                 </Typography>
             </Box>
-            <Typography onClick={clearCompleted} variant="body1">
+            <Typography className='cursor-pointer' onClick={clearCompleted} variant="body1">
                 Clear completed
             </Typography>
         </Box>

@@ -109,6 +109,14 @@ input {
   }
 }
 
+.cursor-pointer {
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(255, 0, 0, 0.616);
+  }
+}
+
 .sorting {
   margin-top: 30px;
   display: flex;
@@ -127,6 +135,13 @@ input {
     .active {
       background-color: #565151;
       color: white;
+    }
+
+    .item {
+      &:hover {
+        background-color: rgba(128, 128, 128, 0.39);
+        color: black;
+      }
     }
 
     p {

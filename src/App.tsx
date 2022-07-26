@@ -1,34 +1,31 @@
-import React, { useState } from 'react'
-import { Box, Typography } from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { ITodo } from './models/Todo'
-import { useInput } from './hooks/useInput'
-import Todos from './components/Todos'
-import Sorting from './components/Sorting'
+import React, { useCallback, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import { ITodo } from './models/Todo';
+import Tasks from './components/Tasks';
+import Sorting from './components/Sorting';
+import Form from './components/Form';
 
 
 const App = () => {
-  const [todo, setTodo] = useState<ITodo[]>([])
-  const [parameter, setParameter] = useState<"all" | "completed" | 'active'>('all')
-  const { text, change, clearInput } = useInput()
+  const [todo, setTodo] = useState<ITodo[]>([]);
+  const [parameter, setParameter] = useState<"all" | "completed" | 'active'>('all');
 
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter") {
-      setTodo(
-        [...todo, {
-          id: todo.length + 1,
-          text,
-          isCompleted: false
-        }]
-      )
-      clearInput()
-    }
-  }
-  const filterData = (): ITodo[] => {
-    if (parameter === 'all') {
-      return todo
-    }
+  const setCompleted = useCallback((id: number) => {
+    setTodo(todo.map((i: ITodo) => {
+      if (i.id === id) {
+        return { ...i, isCompleted: true }
+      } else {
+        return i
+      }
+    }))
+  }, [todo]);
+
+  const clearCompleted = useCallback(() => setTodo(todo.filter((i: ITodo) => !i.isCompleted)), [todo]);
+
+  const notMade = useCallback(() => todo.filter((i: ITodo) => !i.isCompleted).length, [todo]);
+
+  const filterTasks = () => {
     if (parameter === "active" && todo) {
       return todo.filter((i: ITodo) => i.isCompleted === false)
     }
@@ -38,17 +35,6 @@ const App = () => {
 
     return todo
   }
-  const setCompleted = (id: number) => {
-    setTodo(todo.map((i: ITodo) => {
-      if (i.id === id) {
-        return { ...i, isCompleted: true }
-      } else {
-        return i
-      }
-    }))
-  }
-  const clearCompleted = () => setTodo(todo.filter((i: ITodo) => !i.isCompleted))
-  const notMade = (): number => todo.filter((i: ITodo) => !i.isCompleted).length
 
   return (
     <Box className="container">
@@ -56,23 +42,12 @@ const App = () => {
         todos
       </Typography>
       <Box className="root">
-        <Box className="upper__block">
-          <ExpandMoreIcon
-            fontSize='large'
-          />
-          <input
-            onKeyDown={onKeyDown}
-            type="text"
-            value={text}
-            onChange={change}
-            placeholder='What needs to be done?'
-          />
-        </Box>
-        <Todos setCompleted={setCompleted} todo={filterData()} />
+        <Form setTodo={setTodo} todo={todo} />
+        <Tasks setCompleted={setCompleted} todo={filterTasks()} />
         <Sorting notMade={notMade()} clearCompleted={clearCompleted} parameter={parameter} setParameter={setParameter} />
       </Box>
     </Box>
   )
-}
+};
 
-export default App
+export default App;
