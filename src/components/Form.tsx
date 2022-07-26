@@ -35,6 +35,7 @@ const Form: FC<IForm> = ({ todo, setTodo }) => {
                 fontSize='large'
             />
             <input
+                data-testid="form-input"
                 onKeyDown={onKeyDown}
                 type="text"
                 value={text}
@@ -42,6 +43,7 @@ const Form: FC<IForm> = ({ todo, setTodo }) => {
                 placeholder='What needs to be done?'
             />
             <button
+                data-testid="form-btn"
                 onClick={() => send()}
                 className={"form__btn"}
                 disabled={text.length < 3}
